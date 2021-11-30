@@ -6,7 +6,7 @@
 // @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @description  try to take over the world!
 // @author       buzzguru
-// @match        https://www.youtube.com/*
+// @match        *://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @grant        GM_xmlhttpRequest
 // @run-at       document-start
