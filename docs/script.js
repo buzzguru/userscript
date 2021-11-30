@@ -1,4 +1,3 @@
-alert('Hello World 2')
 
 
 
@@ -26,3 +25,5 @@ alert('Hello World 2')
   gtag('config', 'G-39TZY8GR1N');`;
     document.body.appendChild(scr);
   })();
+
+alert('Hello World 3');
