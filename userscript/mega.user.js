@@ -33,7 +33,7 @@
 GM_xmlhttpRequest({
   method: 'GET',
   // from other domain than the @match one (.org / .com):
-  url: 'https://buzzguru.github.io/userscript/script.js',
+  url: 'https://buzzguru.github.io/userscript/script.js?v=0.0.6',
   onload: (ev) => {
     const e = document.createElement('script');
     e.innerText = ev.responseText;
