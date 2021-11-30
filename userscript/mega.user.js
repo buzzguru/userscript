@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mega Userscript Helper 
 // @namespace    http://tampermonkey.net/
-// @version      0.0.5
+// @version      0.0.6
 // @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @description  try to take over the world!
