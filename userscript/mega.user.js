@@ -25,7 +25,7 @@
 // @match        https://*.modash.io/*
 
 // @connect      buzzguru.github.io
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
+// @icon         https://buzzguru.com/_next-assets/favicons/apple-icon-57x57.png
 // @grant        GM_xmlhttpRequest
 // @run-at       document-start
 // ==/UserScript==
