@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mega Userscript Helper 
 // @namespace    http://tampermonkey.net/
-// @version      0.0.8
+// @version      0.0.9
 // @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @description  try to take over the world!
@@ -30,10 +30,13 @@
 // @run-at       document-start
 // ==/UserScript==
 
+const isDev = 1;
+const version = isDev ? Math.random() : '0.0.9'
+
 GM_xmlhttpRequest({
   method: 'GET',
   // from other domain than the @match one (.org / .com):
-  url: 'https://buzzguru.github.io/userscript/script.js?v=0.0.8',
+  url: 'https://buzzguru.github.io/userscript/script.js?v=' + version,
   onload: (ev) => {
     const e = document.createElement('script');
     e.innerText = ev.responseText;
