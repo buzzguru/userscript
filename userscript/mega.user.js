@@ -7,6 +7,7 @@
 // @description  try to take over the world!
 // @author       buzzguru
 // @match        *://*/*
+// @connect      buzzguru.github.io
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @grant        GM_xmlhttpRequest
 // @run-at       document-start
