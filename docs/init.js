@@ -9,17 +9,17 @@
      *
      */
     if (typeof entrypoints === 'undefined') {
-      console.error('[@lskjs/userscript] Empty entrypoints')
+      console.error('[@lskjs/userscript] Empty entrypoints');
       return;
     }
-    console.log('[@lskjs/userscript] entrypoints', entrypoints)
+    console.log('[@lskjs/userscript] entrypoints', entrypoints);
 
     entrypoints.forEach(entrypoint => {
-      console.log('[@lskjs/userscript] Injecting entrypoint', entrypoint)
+      console.log('[@lskjs/userscript] Injecting entrypoint', entrypoint);
       const script = document.createElement('script');
       script.src = entrypoint;
       document.body.appendChild(script);
     })
-    console.log('[@lskjs/userscript] inited success')
+    console.log('[@lskjs/userscript] inited success');
 })();
 
