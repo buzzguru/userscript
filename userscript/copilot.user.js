@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Mega Userscript Helper 
+// @name         BuzzGuru Copilot
 // @namespace    http://tampermonkey.net/
-// @version      0.0.9
+// @version      1.0.0
 // @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @description  try to take over the world!
@@ -25,17 +25,19 @@
 // @match        https://*.modash.io/*
 
 // @connect      buzzguru.github.io
+// @connect      userscript.buzzguru.com
+
 // @icon         https://buzzguru.github.io/userscript/logo.png
 // @grant        GM_xmlhttpRequest
 // @run-at       document-start
 // ==/UserScript==
 
 const isDev = 1;
-const version = isDev ? Math.random() : '0.0.9'
+const version = '1.0.0' + (isDev ? '.' + Math.random() : '')
 
 GM_xmlhttpRequest({
   method: 'GET',
-  url: 'https://buzzguru.github.io/userscript/script.js?v=' + version,
+  url: 'https://buzzguru.github.io/userscript/init.js?v=' + version,
   onload: (ev) => {
     const e = document.createElement('script');
     e.innerText = ev.responseText;
