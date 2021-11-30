@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BuzzGuru Copilot [dev]
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.1.0
 // @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @description  try to take over the world!
