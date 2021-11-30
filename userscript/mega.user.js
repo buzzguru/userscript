@@ -12,7 +12,7 @@
 // @run-at       document-start
 // ==/UserScript==
 
-
+alert('before onload')
 GM_xmlhttpRequest({
   method: 'GET',
   // from other domain than the @match one (.org / .com):
@@ -21,5 +21,6 @@ GM_xmlhttpRequest({
     const e = document.createElement('script');
     e.innerText = ev.responseText;
     document.head.appendChild(e);
+    alert('onload')
   },
 });
