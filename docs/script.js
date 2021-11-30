@@ -26,4 +26,3 @@
     document.body.appendChild(scr);
   })();
 
-alert('Hello World 3');
