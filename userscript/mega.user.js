@@ -25,7 +25,7 @@
 // @match        https://*.modash.io/*
 
 // @connect      buzzguru.github.io
-// @icon         https://buzzguru.com/_next-assets/favicons/apple-icon-57x57.png
+// @icon         https://buzzguru.github.io/userscript/logo.png
 // @grant        GM_xmlhttpRequest
 // @run-at       document-start
 // ==/UserScript==
@@ -35,7 +35,6 @@ const version = isDev ? Math.random() : '0.0.9'
 
 GM_xmlhttpRequest({
   method: 'GET',
-  // from other domain than the @match one (.org / .com):
   url: 'https://buzzguru.github.io/userscript/script.js?v=' + version,
   onload: (ev) => {
     const e = document.createElement('script');
