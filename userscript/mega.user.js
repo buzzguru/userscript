@@ -3,7 +3,7 @@
 // @version      0.1
 // @description  Script from a website
 // @author       You
-// @match        *://*.example.com/*
+// @match        *
 // @grant        GM_xmlhttpRequest
 // @run-at       document-start
 // ==/UserScript==
