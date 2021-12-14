@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BuzzGuru Copilot [dev]
 // @namespace    http://tampermonkey.net/
-// @version      1.1.1
+// @version      1.2.0
 // @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
 // @description  try to take over the world!
@@ -46,16 +46,49 @@
 /* global GM_info GM_xmlhttpRequest GM_addElement unsafeWindow */
 /* eslint-disable camelcase */
 
-const isDev = GM_info.script.name.includes('[dev]');
-const version = GM_info.script.version + (isDev ? `.${Math.random()}` : '');
-const baseURL = isDev ? 'http://localhost:3000' : 'https://buzzguru.github.io/userscript';
+// eslint-disable-next-line no-nested-ternary
+const stage = GM_info.script.name.includes('[dev]')
+  ? 'dev'
+  : GM_info.script.name.includes('[staging]')
+  ? 'staging'
+  : 'prod';
+const configs = {
+  dev: {
+    stage: 'dev',
+    debug: true,
+    version: `${GM_info.script.version}.${Math.random()}`,
+    baseURL: 'http://localhost:3000',
+    client: {
+      baseURL: `http://localhost:8080/api`,
+    },
+  },
+  staging: {
+    stage: 'staging',
+    debug: false,
+    version: GM_info.script.version,
+    baseURL: 'https://buzzguru.github.io/staging-userscript',
+    client: {
+      baseURL: `https://userscript.buzz.guru/api`,
+    },
+  },
+  prod: {
+    stage: 'prod',
+    debug: false,
+    version: GM_info.script.version,
+    baseURL: 'https://buzzguru.github.io/userscript',
+    client: {
+      baseURL: `https://userscript.buzz.guru/api`,
+    },
+  },
+};
+const config = configs[stage];
+
 const log = console;
-const env = { isDev, version, baseURL };
+const { debug: isDebug, baseURL, version } = config;
 // eslint-disable-next-line no-console
 log.trace = console.log;
-if (isDev) log.trace('[@lskjs/userscript]', { isDev, version, baseURL });
-unsafeWindow.__lskjs = { env, log, GM_info, GM_xmlhttpRequest, GM_addElement };
-unsafeWindow.__extention = unsafeWindow.__lskjs;
+if (isDebug) log.trace('[@lskjs/userscript]', config);
+unsafeWindow.__lskjs = { env: config, config, log, GM_info, GM_xmlhttpRequest, GM_addElement, unsafeWindow };
 
 function request(url, { method = 'GET' } = {}) {
   return new Promise((resolve, reject) => {
@@ -69,13 +102,13 @@ function request(url, { method = 'GET' } = {}) {
 }
 
 function injectJs(url) {
-  if (isDev) log.trace('[@lskjs/userscript]', 'injectJs start', url);
+  if (isDebug) log.trace('[@lskjs/userscript]', 'injectJs start', url);
   return request(url)
     .then(({ responseText }) => {
       unsafeWindow.__lskjs.responseText = responseText;
       GM_addElement('script', { textContent: responseText });
 
-      if (isDev) log.trace('[@lskjs/userscript]', 'injectJs success', url);
+      if (isDebug) log.trace('[@lskjs/userscript]', 'injectJs success', url);
     })
     .catch((err) => {
       log.error('[@lskjs/userscript]', 'injectJs err', url, { err });
@@ -84,7 +117,7 @@ function injectJs(url) {
 
 async function init() {
   let entrypoints;
-  if (isDev) {
+  if (isDebug) {
     entrypoints = ['test.js', 'static/js/bundle.js', 'static/js/vendors~main.chunk.js', 'static/js/main.chunk.js'];
   } else {
     const assetManifestUrl = `${baseURL}/asset-manifest.json?v=${version}`;
