@@ -59,7 +59,7 @@ const configs = {
     version: `${GM_info.script.version}.${Math.random()}`,
     baseURL: 'http://localhost:3000',
     client: {
-      baseURL: `http://localhost:8080/api`,
+      baseURL: `http://localhost:8000/api`,
     },
   },
   staging: {
