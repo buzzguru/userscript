@@ -21,7 +21,7 @@
 // @match        *://twitch.tv/*
 // @match        *://*.twitch.tv/*
 
-// @match        *://*.appannie.com/*
+// @match        *://*.data.ai/*
 
 // @match        *://modash.io/*
 // @match        *://*.modash.io/*
