@@ -40,10 +40,12 @@
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addElement
 // @grant        GM_addScript
+// @grant        GM_setValue
+// @grant        GM_getValue
 // @run-at       document-start
 // ==/UserScript==
 
-/* global GM_info GM_xmlhttpRequest GM_addElement unsafeWindow */
+/* global GM_info GM_xmlhttpRequest GM_addElement GM_setValue GM_getValue unsafeWindow */
 /* eslint-disable camelcase */
 
 // eslint-disable-next-line no-nested-ternary
@@ -88,7 +90,7 @@ const { debug: isDebug, baseURL, version } = config;
 // eslint-disable-next-line no-console
 log.trace = console.log;
 if (isDebug) log.trace('[@lskjs/userscript]', config);
-unsafeWindow.__lskjs = { env: config, config, log, GM_info, GM_xmlhttpRequest, GM_addElement, unsafeWindow };
+unsafeWindow.__lskjs = { env: config, config, log, GM_info, GM_xmlhttpRequest, GM_addElement, unsafeWindow, GM_setValue, GM_getValue };
 
 function request(url, { method = 'GET' } = {}) {
   return new Promise((resolve, reject) => {
