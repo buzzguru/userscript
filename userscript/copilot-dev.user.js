@@ -29,6 +29,7 @@
 // @match        *://hypeauditor.com/*
 // @match        *://*.hypeauditor.com/*
 
+// @connect      api.buzz.guru
 // @connect      worker.buzz.guru
 // @connect      127.0.0.1
 // @connect      localhost
