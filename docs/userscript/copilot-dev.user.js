@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         BuzzGuru Copilot [dev]
+// @name         BuzzGuru Copilot [DEV]
 // @namespace    http://tampermonkey.net/
-// @version      1.2.0
-// @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
-// @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/mega.user.js
-// @description  try to take over the world!
-// @author       buzzguru
+// @version      1.3.1
+// @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/copilot-dev.user.js
+// @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/copilot-dev.user.js
+// @description  insights
+// @author       BuzzGuru
 
 // @match        *://*/*
 
@@ -50,47 +50,21 @@
 /* eslint-disable camelcase */
 
 // eslint-disable-next-line no-nested-ternary
-const stage = GM_info.script.name.includes('[dev]')
-  ? 'dev'
-  : GM_info.script.name.includes('[staging]')
-  ? 'staging'
-  : 'prod';
 const configs = {
-  dev: {
-    stage: 'dev',
-    debug: true,
-    version: `${GM_info.script.version}.${Math.random()}`,
-    baseURL: 'http://localhost:3000',
-    client: {
-      baseURL: `http://localhost:8000/api`,
-    },
-  },
-  staging: {
-    stage: 'staging',
-    debug: false,
-    version: GM_info.script.version,
-    baseURL: 'https://buzzguru.github.io/staging-userscript',
-    client: {
-      baseURL: `https://userscript.buzz.guru/api`,
-    },
-  },
-  prod: {
-    stage: 'prod',
-    debug: false,
-    version: GM_info.script.version,
-    baseURL: 'https://buzzguru.github.io/userscript',
-    client: {
-      baseURL: `https://userscript.buzz.guru/api`,
-    },
-  },
+  "stage": "dev",
+  "debug": true,
+  "baseURL": "http://localhost:3000",
+  "client": {
+    "baseURL": "http://localhost:8000/api"
+  }
 };
-const config = configs[stage];
+config.version = config.stage === 'dev' ? `${GM_info.script.version}.${Math.random()}`: GM_info.script.version;
 
 const log = console;
 const { debug: isDebug, baseURL, version } = config;
 // eslint-disable-next-line no-console
-log.trace = console.log;
-if (isDebug) log.trace('[@lskjs/userscript]', config);
+log.trace = (...args) => console.log('[@lskjs/userscript]', ...args);
+if (isDebug) log.trace(config);
 unsafeWindow.__lskjs = { env: config, config, log, GM_info, GM_xmlhttpRequest, GM_addElement, unsafeWindow, GM_setValue, GM_getValue };
 
 function request(url, { method = 'GET' } = {}) {
@@ -134,3 +108,4 @@ async function init() {
 }
 
 init().catch((err) => log.error('[@lskjs/userscript]', 'init err', { err }));
+
