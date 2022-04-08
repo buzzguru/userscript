@@ -50,7 +50,7 @@
 /* eslint-disable camelcase */
 
 // eslint-disable-next-line no-nested-ternary
-const configs = {
+const config = {
   "stage": "dev",
   "debug": true,
   "baseURL": "http://localhost:3000",

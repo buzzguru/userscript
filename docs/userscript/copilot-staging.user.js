@@ -50,7 +50,7 @@
 /* eslint-disable camelcase */
 
 // eslint-disable-next-line no-nested-ternary
-const configs = {
+const config = {
   "stage": "staging",
   "debug": false,
   "baseURL": "https://buzzguru.github.io/staging-userscript",
