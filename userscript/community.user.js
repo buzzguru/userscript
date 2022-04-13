@@ -113,9 +113,53 @@ let table = [];
     const button2 = document.createElement('button');
     const button1 = document.createElement('button');
     const button4 = document.createElement('button');
+    const button3 = document.createElement('button');
     button1.innerText = 'Get data for 1';
     button2.innerText = '2';
     button4.innerText = '4 months';
+    button3.innerText = 'Download trends';
+    const downloadTrends = () => {
+        const filename = "YT_NAVIGATOR_DUMP.csv";
+
+        const rows = [
+            ["Название канала", "Ссылку на канал", "Название видео", "Ссылка на видео"],
+        ];
+    
+        let items = [];
+    
+        console.log('asdasd');
+        if(!window.ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[1].itemSectionRenderer.contents[0].shelfRenderer.title) {
+            items = window.ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[1].itemSectionRenderer.contents[0].shelfRenderer.content.expandedShelfContentsRenderer.items;
+        } else {
+            items = window.ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].shelfRenderer.content.expandedShelfContentsRenderer.items;
+        }
+    
+        items.forEach((item) => {
+            const channelTitle = item.videoRenderer.longBylineText.runs[0].text;
+            const channelUrl = `https://www.youtube.com/channel/${item.videoRenderer.channelThumbnailSupportedRenderers.channelThumbnailWithLinkRenderer.navigationEndpoint.browseEndpoint.browseId}`;
+            const videoTitle = item.videoRenderer.title.runs[0].text;
+            const videoUrl = `https://www.youtube.com/watch?v=${item.videoRenderer.navigationEndpoint.watchEndpoint.videoId}`;
+    
+            rows.push([channelTitle,channelUrl,videoTitle,videoUrl]);
+        });
+    
+        var blob = new Blob([rows.map(e => e.join(";")).join("\n")], { type: 'text/csv;charset=utf-8;' });
+        if (navigator.msSaveBlob) { // IE 10+
+            navigator.msSaveBlob(blob, filename);
+        } else {
+            var link = document.createElement("a");
+            if (link.download !== undefined) { // feature detection
+                // Browsers that support HTML5 download attribute
+                var url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    }
     const onClick = async (count) => {
         status.style.visibility = 'inherit';
         status.innerHTML = '<div>Собираем информацию об аккаунте</div>';
@@ -295,9 +339,11 @@ let table = [];
     button1.addEventListener('click', onClick.bind(this, 1));
     button2.addEventListener('click', onClick.bind(this, 2));
     button4.addEventListener('click', onClick.bind(this, 4));
+    button3.addEventListener('click', downloadTrends.bind(this, 3));
     element.appendChild(button1);
     element.appendChild(button2);
     element.appendChild(button4);
+    element.appendChild(button3);
     element.appendChild(status);
     element.appendChild(result);
     document.addEventListener('yt-navigate-finish', (e) => {
