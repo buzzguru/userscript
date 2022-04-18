@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BuzzGuru Copilot
 // @namespace    http://tampermonkey.net/
-// @version      1.10.1
+// @version      1.11.0
 // @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/copilot.user.js
 // @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/copilot.user.js
 // @description  insights
@@ -30,6 +30,7 @@
 // @match        *://*.hypeauditor.com/*
 
 // @connect      api.buzz.guru
+// @connect      buzzguru.com
 // @connect      worker.buzz.guru
 // @connect      127.0.0.1
 // @connect      localhost
