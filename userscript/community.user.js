@@ -2,8 +2,8 @@
 // @name         Youtube BG Community Helper
 // @namespace    http://tampermonkey.net/
 // @version      0.11
-// @description  try to take over the world!
-// @author       ga2mer
+// @description  Расширение помогает получать актуальную аналитику по YouTube каналу, а так же скачивать список видео из трендов.
+// @author       buzzguru
 // @require https://raw.githubusercontent.com/lodash/lodash/4.17.4/dist/lodash.js
 // @match        https://www.youtube.com/*
 // @connect      worker.buzz.guru
