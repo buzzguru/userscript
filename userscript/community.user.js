@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Youtube BG Community Helper
 // @namespace    http://tampermonkey.net/
-// @version      0.10
+// @version      0.11
 // @description  try to take over the world!
 // @author       ga2mer
 // @require https://raw.githubusercontent.com/lodash/lodash/4.17.4/dist/lodash.js
