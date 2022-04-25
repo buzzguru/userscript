@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BuzzGuru Copilot [DEV]
 // @namespace    http://tampermonkey.net/
-// @version      1.15.1
+// @version      1.16.1
 // @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/copilot-dev.user.js
 // @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/copilot-dev.user.js
 // @description  insights
