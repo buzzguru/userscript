@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Youtube BG Community Helper
 // @namespace    http://tampermonkey.net/
-// @version      0.11
-// @description  Расширение помогает получать актуальную аналитику по YouTube каналу, а так же скачивать список видео из трендов.
-// @author       buzzguru
+// @version      0.10
+// @description  try to take over the world!
+// @author       ga2mer
 // @require https://raw.githubusercontent.com/lodash/lodash/4.17.4/dist/lodash.js
 // @match        https://www.youtube.com/*
 // @connect      worker.buzz.guru
@@ -118,33 +118,31 @@ let table = [];
     button2.innerText = '2';
     button4.innerText = '4 months';
     button3.innerText = 'Download trends';
-    const downloadTrends = async () => {
+    const downloadTrends = () => {
         const filename = "YT_NAVIGATOR_DUMP.csv";
 
         const rows = [
             ["Название канала", "Ссылку на канал", "Название видео", "Ссылка на видео"],
         ];
-
+    
         let items = [];
-
-        const channelResponse = await unsafeWindow.fetch('https://www.youtube.com/feed/trending').then(res => res.text());
-        const [json] = channelResponse.match(/(?<=var ytInitialData\s=\s)(.*?)(?=;<\/script>)/) || [];
-        const ytInitialData = JSON.parse(json);
-        const arr = ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents;
-        arr.forEach(el => {
-            if (!el.itemSectionRenderer.contents[0].shelfRenderer.title) {
-                items.push(...el.itemSectionRenderer.contents[0].shelfRenderer.content.expandedShelfContentsRenderer.items);
-            }
-        });
+    
+        console.log('asdasd');
+        if(!window.ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[1].itemSectionRenderer.contents[0].shelfRenderer.title) {
+            items = window.ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[1].itemSectionRenderer.contents[0].shelfRenderer.content.expandedShelfContentsRenderer.items;
+        } else {
+            items = window.ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].shelfRenderer.content.expandedShelfContentsRenderer.items;
+        }
+    
         items.forEach((item) => {
             const channelTitle = item.videoRenderer.longBylineText.runs[0].text;
             const channelUrl = `https://www.youtube.com/channel/${item.videoRenderer.channelThumbnailSupportedRenderers.channelThumbnailWithLinkRenderer.navigationEndpoint.browseEndpoint.browseId}`;
             const videoTitle = item.videoRenderer.title.runs[0].text;
             const videoUrl = `https://www.youtube.com/watch?v=${item.videoRenderer.navigationEndpoint.watchEndpoint.videoId}`;
-
+    
             rows.push([channelTitle,channelUrl,videoTitle,videoUrl]);
         });
-
+    
         var blob = new Blob([rows.map(e => e.join(";")).join("\n")], { type: 'text/csv;charset=utf-8;' });
         if (navigator.msSaveBlob) { // IE 10+
             navigator.msSaveBlob(blob, filename);

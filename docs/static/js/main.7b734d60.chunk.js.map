@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/index.js"],"names":["console","log"],"mappings":"iHAEA,E,KAFA,SAEA,WAGEA,QAAQC,IAAI,sB","file":"static/js/main.7b734d60.chunk.js","sourcesContent":["import ready from '@lskjs/utils/polyfill';\n\nready();\n\nconst main = () => {\n  console.log('Hello UserScript');\n};\n\nmain();\n"],"sourceRoot":""}
