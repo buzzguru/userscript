@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BuzzGuru Copilot [STAGING]
 // @namespace    http://tampermonkey.net/
-// @version      1.24.0
+// @version      1.25.0
 // @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/copilot-staging.user.js
 // @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/copilot-staging.user.js
 // @description  insights
