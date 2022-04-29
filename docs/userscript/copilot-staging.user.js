@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         BuzzGuru Copilot [STAGING]
+// @name         Copilot [STAGING]
 // @namespace    http://tampermonkey.net/
-// @version      1.28.0
+// @version      1.29.0
 // @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/copilot-staging.user.js
 // @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/copilot-staging.user.js
 // @description  Influencers insights
@@ -53,6 +53,16 @@
 // eslint-disable-next-line no-nested-ternary
 const config = {
   "stage": "staging",
+  "plugins": [
+    "appannie",
+    "hypeauditor",
+    "igram",
+    "loaderto",
+    "instagram",
+    "modash",
+    "toolbar",
+    "downloader"
+  ],
   "debug": false,
   "baseURL": "https://buzzguru.github.io/staging-userscript",
   "client": {
