@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Advanced Influencer Analytics by BuzzGuru
 // @namespace    http://tampermonkey.net/
-// @version      1.49.0
+// @version      2.1.0
 // @downloadURL  https://userscript.buzz.guru/userscript/copilot.user.js
 // @updateURL    https://userscript.buzz.guru/userscript/copilot.user.js
 // @description  Influencer analytics on YouTube and Instagram right at your fingertips.
