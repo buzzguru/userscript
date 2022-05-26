@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Advanced Influencer Analytics by BuzzGuru
 // @namespace    http://tampermonkey.net/
-// @version      1.44.0
-// @downloadURL  https://github.com/buzzguru/userscript/raw/master/userscript/copilot.user.js
-// @updateURL    https://github.com/buzzguru/userscript/raw/master/userscript/copilot.user.js
+// @version      1.45.0
+// @downloadURL  https://userscript.buzz.guru/userscript/userscript/copilot.user.js
+// @updateURL    https://userscript.buzz.guru/userscript/userscript/copilot.user.js
 // @description  Influencer analytics on YouTube and Instagram right at your fingertips.
 // @author       BuzzGuru
 
@@ -36,9 +36,9 @@
 // @connect      localhost
 // @connect      cdn.jsdelivr.net
 // @connect      buzzguru.github.io
-// @connect      userscript.buzzguru.com
+// @connect      localhost
 
-// @icon         https://buzzguru.github.io/userscript/logo.png
+// @icon         https://userscript.buzz.guru/userscript/icons/red-icon-128.png
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addElement
 // @grant        GM_addScript
@@ -53,23 +53,26 @@
 // eslint-disable-next-line no-nested-ternary
 const config = {
   "stage": "prod",
+  "log": {
+    "level": "error"
+  },
   "plugins": [
     "toolbar"
   ],
   "debug": false,
-  "baseURL": "https://buzzguru.github.io/userscript",
+  "staticBaseUrl": "https://userscript.buzz.guru/userscript",
   "client": {
-    "baseURL": "https://userscript.buzz.guru/api"
+    "baseURL": "https://api.buzz.guru/api"
   }
 };
 config.version = config.stage === 'dev' ? `${GM_info.script.version}.${Math.random()}`: GM_info.script.version;
 
 const log = console;
-const { debug: isDebug, baseURL, version } = config;
+const { debug: isDebug, staticBaseUrl, version } = config;
 // eslint-disable-next-line no-console
 log.trace = (...args) => console.log('[@lskjs/userscript]', ...args);
 if (isDebug) log.trace(config);
-unsafeWindow.__lskjs = { env: config, config, log, GM_info, GM_xmlhttpRequest, GM_addElement, unsafeWindow, GM_setValue, GM_getValue };
+unsafeWindow.__lskjs = { stage: config.stage,version: config.version,plugins: config.plugins, env: config, config, log, GM_info, GM_xmlhttpRequest, GM_addElement, unsafeWindow, GM_setValue, GM_getValue };
 
 function request(url, { method = 'GET' } = {}) {
   return new Promise((resolve, reject) => {
@@ -83,16 +86,16 @@ function request(url, { method = 'GET' } = {}) {
 }
 
 function injectJs(url) {
-  if (isDebug) log.trace('[@lskjs/userscript]', 'injectJs start', url);
+  if (isDebug) log.trace('injectJs start', url);
   return request(url)
     .then(({ responseText }) => {
       unsafeWindow.__lskjs.responseText = responseText;
       GM_addElement('script', { textContent: responseText });
 
-      if (isDebug) log.trace('[@lskjs/userscript]', 'injectJs success', url);
+      if (isDebug) log.trace('injectJs success', url);
     })
     .catch((err) => {
-      log.error('[@lskjs/userscript]', 'injectJs err', url, { err });
+      log.error('injectJs err', url, { err });
     });
 }
 
@@ -101,14 +104,14 @@ async function init() {
   if (isDebug) {
     entrypoints = ['test.js', 'static/js/bundle.js', 'static/js/vendors~main.chunk.js', 'static/js/main.chunk.js'];
   } else {
-    const assetManifestUrl = `${baseURL}/asset-manifest.json?v=${version}`;
+    const assetManifestUrl = `${staticBaseUrl}/asset-manifest.json?v=${version}`;
     const assetManifest = await request(assetManifestUrl).then(({ responseText }) => JSON.parse(responseText));
     entrypoints = assetManifest.entrypoints;
   }
-  entrypoints = entrypoints.map((src) => `${baseURL}/${src}`);
-  log.trace('[@lskjs/userscript]', 'entrypoints', entrypoints);
+  entrypoints = entrypoints.map((src) => `${staticBaseUrl}/${src}`);
+  log.trace('entrypoints', entrypoints);
   entrypoints.map((url) => injectJs(url));
-  log.trace('[@lskjs/userscript]', 'inited');
+  log.trace('inited');
 }
 
 init().catch((err) => log.error('[@lskjs/userscript]', 'init err', { err }));
