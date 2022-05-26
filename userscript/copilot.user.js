@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Advanced Influencer Analytics by BuzzGuru
 // @namespace    http://tampermonkey.net/
-// @version      1.48.0
+// @version      1.49.0
 // @downloadURL  https://userscript.buzz.guru/userscript/copilot.user.js
 // @updateURL    https://userscript.buzz.guru/userscript/copilot.user.js
 // @description  Influencer analytics on YouTube and Instagram right at your fingertips.
@@ -36,6 +36,7 @@
 // @connect      localhost
 // @connect      cdn.jsdelivr.net
 // @connect      buzzguru.github.io
+// @connect      userscript.buzz.guru
 // @connect      localhost
 
 // @icon         https://userscript.buzz.guru/icons/red-icon-128.png

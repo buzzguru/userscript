@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Advanced Influencer Analytics [STAGING]
 // @namespace    http://tampermonkey.net/
-// @version      1.48.0
+// @version      1.49.0
 // @downloadURL  https://userscript.buzz.guru/userscript/copilot-staging.user.js
 // @updateURL    https://userscript.buzz.guru/userscript/copilot-staging.user.js
 // @description  Influencers insights
@@ -36,6 +36,7 @@
 // @connect      localhost
 // @connect      cdn.jsdelivr.net
 // @connect      buzzguru.github.io
+// @connect      userscript.buzz.guru
 // @connect      localhost
 
 // @icon         https://buzzguru.github.io/userscript/icons/black-icon-128.png
