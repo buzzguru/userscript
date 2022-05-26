@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Advanced Influencer Analytics [STAGING]
 // @namespace    http://tampermonkey.net/
-// @version      1.45.0
-// @downloadURL  https://userscript.buzz.guru/userscript/userscript/copilot-staging.user.js
-// @updateURL    https://userscript.buzz.guru/userscript/userscript/copilot-staging.user.js
+// @version      1.46.0
+// @downloadURL  https://userscript.buzz.guru/userscript/copilot-staging.user.js
+// @updateURL    https://userscript.buzz.guru/userscript/copilot-staging.user.js
 // @description  Influencers insights
 // @author       BuzzGuru
 
@@ -57,7 +57,7 @@ const config = {
     "toolbar"
   ],
   "debug": false,
-  "staticBaseUrl": "https://userscript.buzz.guru/userscript",
+  "staticBaseUrl": "https://userscript.buzz.guru",
   "client": {
     "baseURL": "https://staging-api.buzz.guru/api"
   }

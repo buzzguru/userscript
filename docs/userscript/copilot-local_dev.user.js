@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Copilot [LOCAL]
 // @namespace    http://tampermonkey.net/
-// @version      1.45.0
-// @downloadURL  https://userscript.buzz.guru/userscript/userscript/copilot-local_de.user.js
-// @updateURL    https://userscript.buzz.guru/userscript/userscript/copilot-local_de.user.js
+// @version      1.46.0
+// @downloadURL  https://userscript.buzz.guru/userscript/copilot-local_de.user.js
+// @updateURL    https://userscript.buzz.guru/userscript/copilot-local_de.user.js
 // @description  Web insights
 // @author       isuvorov.team
 
@@ -38,7 +38,7 @@
 // @connect      buzzguru.github.io
 // @connect      localhost
 
-// @icon         https://userscript.buzz.guru/userscript/icons/dev-icon-128.png
+// @icon         https://userscript.buzz.guru/icons/dev-icon-128.png
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addElement
 // @grant        GM_addScript

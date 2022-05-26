@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Advanced Influencer Analytics by BuzzGuru
 // @namespace    http://tampermonkey.net/
-// @version      1.45.0
-// @downloadURL  https://userscript.buzz.guru/userscript/userscript/copilot.user.js
-// @updateURL    https://userscript.buzz.guru/userscript/userscript/copilot.user.js
+// @version      1.46.0
+// @downloadURL  https://userscript.buzz.guru/userscript/copilot.user.js
+// @updateURL    https://userscript.buzz.guru/userscript/copilot.user.js
 // @description  Influencer analytics on YouTube and Instagram right at your fingertips.
 // @author       BuzzGuru
 
@@ -38,7 +38,7 @@
 // @connect      buzzguru.github.io
 // @connect      localhost
 
-// @icon         https://userscript.buzz.guru/userscript/icons/red-icon-128.png
+// @icon         https://userscript.buzz.guru/icons/red-icon-128.png
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addElement
 // @grant        GM_addScript
@@ -60,7 +60,7 @@ const config = {
     "toolbar"
   ],
   "debug": false,
-  "staticBaseUrl": "https://userscript.buzz.guru/userscript",
+  "staticBaseUrl": "https://userscript.buzz.guru",
   "client": {
     "baseURL": "https://api.buzz.guru/api"
   }
