@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copilot [LOCAL]
 // @namespace    http://tampermonkey.net/
-// @version      2.5.0
+// @version      2.6.0
 // @downloadURL  https://userscript.buzz.guru/userscript/copilot-local_dev.user.js
 // @updateURL    https://userscript.buzz.guru/userscript/copilot-local_dev.user.js
 // @description  Web insights
@@ -65,6 +65,7 @@ const config = {
     "downloader"
   ],
   "debug": true,
+  "isLocal": true,
   "staticBaseUrl": "http://localhost:3000",
   "client": {
     "baseURL": "https://api.buzz.guru/api"
@@ -73,7 +74,7 @@ const config = {
 config.version = config.stage === 'dev' ? `${GM_info.script.version}.${Math.random()}`: GM_info.script.version;
 
 const log = console;
-const { debug: isDebug, staticBaseUrl, version } = config;
+const { debug: isDebug, isLocal, staticBaseUrl, version } = config;
 // eslint-disable-next-line no-console
 log.trace = (...args) => console.log('[@lskjs/userscript]', ...args);
 if (isDebug) log.trace(config);
@@ -106,7 +107,7 @@ function injectJs(url) {
 
 async function init() {
   let entrypoints;
-  if (isDebug) {
+  if (isLocal) {
     entrypoints = ['test.js', 'static/js/bundle.js', 'static/js/vendors~main.chunk.js', 'static/js/main.chunk.js'];
   } else {
     const assetManifestUrl = `${staticBaseUrl}/asset-manifest.json?v=${version}`;
