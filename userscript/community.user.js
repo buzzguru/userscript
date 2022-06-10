@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Youtube BG Community Helper
 // @namespace    http://tampermonkey.net/
-// @version      0.11
+// @version      0.12
 // @description  try to take over the world!
 // @author       ga2mer
 // @require https://raw.githubusercontent.com/lodash/lodash/4.17.4/dist/lodash.js
@@ -118,7 +118,7 @@ let table = [];
     button2.innerText = '2';
     button4.innerText = '4 months';
     button3.innerText = 'Download trends';
-    const downloadTrends = () => {
+    const downloadTrends = async () => {
         const filename = "YT_NAVIGATOR_DUMP.csv";
 
         const rows = [
