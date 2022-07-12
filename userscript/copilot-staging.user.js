@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Advanced Influencer Analytics [STAGING]
 // @namespace    http://tampermonkey.net/
-// @version      2.8.0
+// @version      2.9.0
 // @downloadURL  https://userscript.buzz.guru/userscript/copilot-staging.user.js
 // @updateURL    https://userscript.buzz.guru/userscript/copilot-staging.user.js
 // @description  Influencers insights
